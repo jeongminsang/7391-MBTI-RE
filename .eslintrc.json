@@ -1,11 +1,10 @@
 {
-    "extends": ["react-app", "eslint:recommended", "prettier"],
+    "extends": ["react-app", "eslint:recommended"],
     "rules": {
         "no-var": "error",
         "no-multiple-empty-lines": "error",
         "dot-notation": "error",
         "no-empty": ["error", { "allowEmptyCatch": true }],
-        "prettier/prettier": ["error"],
         "import/order": "error"
     }
 }
