@@ -1,0 +1,10 @@
+{
+    "extends": ["react-app", "eslint:recommended"],
+    "rules": {
+        "no-var": "error",
+        "no-multiple-empty-lines": "error",
+        "dot-notation": "error",
+        "no-empty": ["error", { "allowEmptyCatch": true }],
+        "import/order": "error"
+    }
+}
