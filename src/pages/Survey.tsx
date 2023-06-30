@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Questions from '../api/questionsApi.json';
+import ProgressBar from '../components/ProgressBar';
 
 const MainContainer = styled.div`
   overflow: hidden;
@@ -120,6 +121,7 @@ function Survey() {
                   <span>{currentSlide}</span>
                   <span>/{TOTAL_SLIDES}</span>
                 </div>
+                <ProgressBar currentSlide={currentSlide} />
                 <Question>{item.question}</Question>
               </div>
               <div>
