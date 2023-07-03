@@ -58,7 +58,7 @@ const sharehandle = () => {
     navigator.share({
       title: '나의 학과 테스트 해보기',
       text: '심리 테스트를 통해 당신의 학과를 선택하세요!\n',
-      url: 'https://serene-kringle-40f9ef.netlify.app/',
+      url: 'https://7391-mbti.netlify.app/',
     });
   } else {
     alert('공유하기가 지원되지 않는 환경 입니다.');
