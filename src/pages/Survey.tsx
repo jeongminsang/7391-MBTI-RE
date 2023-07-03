@@ -117,10 +117,6 @@ function Survey() {
             <SurveySection>
               <div>
                 <Backbtn onClick={prevSlide} disabled={currentSlide === 1 ? true : false}>이전 문항</Backbtn>
-                <div>
-                  <span>{currentSlide}</span>
-                  <span>/{TOTAL_SLIDES}</span>
-                </div>
                 <ProgressBar currentSlide={currentSlide} />
                 <Question>{item.question}</Question>
               </div>
