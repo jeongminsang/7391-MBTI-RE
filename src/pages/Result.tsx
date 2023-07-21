@@ -1,4 +1,5 @@
-import { Link, useMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MbtiApi from '../api/mbtiApi.json';
 
@@ -66,9 +67,7 @@ const sharehandle = () => {
 };
 
 const Result = () => {
-  const match: any = useMatch('/result/:MbtiName');
-  console.log(match.params);
-  const { MbtiName }: any = match.params;
+  const { MbtiName } = useParams<{ MbtiName: string }>();
   const nation = MbtiApi[MbtiName as keyof typeof MbtiApi];
 
   return (

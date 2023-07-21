@@ -67,28 +67,34 @@ const Backbtn = styled.button`
 
 function Survey() {
   const [currentSlide, setCurrentSlide] = useState(1);  //현재 슬라이드
-  const slideRef = useRef<any>(null);
+  const slideRef = useRef<HTMLDivElement | null>(null);
   const TOTAL_SLIDES = 12; // 총 슬라이드
   const navigate = useNavigate();
-  const [mbti, setMbti] = useState<any>([]); // 가져올 mock 데이터에서 MBTI만 추출한 상태
+  const [mbti, setMbti] = useState<string[]>([]); // 가져올 mock 데이터에서 MBTI만 추출한 상태
   let result: string[] = [];
-  const nextSlideFir = () => {
-    setMbti(mbti + Questions[currentSlide - 1].answers[0].type);
-    setCurrentSlide(currentSlide + 1);
-    slideRef.current.style.transform += 'translateX(-100vw)';
+  const nextSlideFir = (): void => {
+    setMbti((prevMbti: string[]) => [...prevMbti, Questions[currentSlide - 1].answers[0].type]);
+    setCurrentSlide((prevSlide: number) => prevSlide + 1);
+    if (slideRef.current !== null) {
+      slideRef.current.style.transform += 'translateX(-100vw)';
+    }
   };
   const nextSlideSec = () => {
-    setMbti(mbti + Questions[currentSlide - 1].answers[1].type);
-    setCurrentSlide(currentSlide + 1);
-    slideRef.current.style.transform += 'translateX(-100vw)';
+    setMbti((prevMbti: string[]) => [...prevMbti, Questions[currentSlide - 1].answers[1].type]);
+    setCurrentSlide((prevSlide: number) => prevSlide + 1);
+    if (slideRef.current !== null) {
+      slideRef.current.style.transform += 'translateX(-100vw)';
+    }
   };
   const prevSlide = () => {
     setCurrentSlide(currentSlide - 1);
-    slideRef.current.style.transform += 'translateX(+100vw)';
+    if (slideRef.current !== null) {
+      slideRef.current.style.transform += 'translateX(+100vw)';
+    }
     setMbti(mbti.slice(0, -1))
   };
   const mbtiChecker = () => {
-    let map: any = {};
+    let map: { [key: string]: number } = {};
 
     for (let i = 0; i < TOTAL_SLIDES; i++) {
       if (mbti[i] in map) {
